@@ -1,0 +1,20 @@
+
+
+Importing file: C:\Users\rcaldeira\Documents\CustomerService.wsdl
+
+The WSDL import will proceed with bindings CusomerServiceSOAPJMSBinding, CustomerServiceSOAP.
+Creating wsdl schema document for file:///C:/Users/rcaldeira/Documents/CustomerService.wsdl.
+Parsing wsdl binding {http://www.acmeCustomers.com/CustomerService}CusomerServiceSOAPJMSBinding.
+Parsing wsdl binding input getCustomerDetails.
+Parsing wsdl binding output getCustomerDetails.
+Parsing wsdl binding {http://www.acmeCustomers.com/CustomerService}CustomerServiceSOAP.
+Parsing wsdl binding input getCustomerDetails.
+Parsing wsdl binding output getCustomerDetails.
+Processing doc style for operation getCustomerDetails.
+Populating WSDL schema uk/co/deloitte/stub/CustomerService.xsd.
+Creating file uk/co/deloitte/stub/CustomerService.xsd in the workspace.
+Creating file uk/co/deloitte/stub/CustomerService_InlineSchema1.xsd in the workspace.
+Copying source WSDL CustomerService.wsdl to CustomerService.wsdl.
+
+Elapsed time processing this message definition file: 0.206 seconds
+Number of warnings for this message definition file: 0

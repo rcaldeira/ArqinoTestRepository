@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:com.ibm.etools.mft.unittest.core.models.client="http:///com/ibm/etools/mft/unittest/core/models/client.ecore" xmlns:com.ibm.wbit.comptest.common.models.event="http:///com/ibm/etools/mft/unittest/common/models/event.ecore" xmlns:com.ibm.wbit.comptest.common.models.value="http:///com/ibm/etools/mft/unittest/common/models/value.ecore" xmlns:http="http:///com/ibm//etools/mft/unittest/common/model2/http" xmlns:http_1="http:///com/ibm//etools/mft/unittest/common/model2/status" xmlns:jms="http:///com/ibm//etools/mft/unittest/common/model2/jms" xmlns:model2="http:///com/ibm//etools/mft/unittest/common/model2" xmlns:mq="http:///com/ibm//etools/mft/unittest/common/model2/mq">
+  <com.ibm.etools.mft.unittest.core.models.client:EclipseClient iD="1431938719884-0" eventTrace="/1" clientID="1431938719884-0">
+    <scopes xsi:type="model2:FlowTestScope" name="Configuration" iD="default" dirty="false">
+      <testModules xsi:type="model2:TestMsgFlow" name="/Stubs/uk/co/deloitte/stub/MQIMSStub.msgflow" iD="1431938719884-4">
+        <inputNodes xsi:type="mq:MQInputNode" nodeName="MQ Input" queue="CALL.STUB.IN"/>
+      </testModules>
+      <testModules xsi:type="model2:TestMsgFlow" name="/Stubs/uk/co/deloitte/stub/WebServiceStub.msgflow" iD="1431938719884-5">
+        <monitors xsi:type="mq:MQMonitor" name="TEST.OUT" iD="1431940350847-344" host="localhost" port="0" queueManager="IB9QMGR" queue="TEST.OUT">
+          <properties name="SERVER_CHANNEL" stringValue="SYSTEM.BKR.CONFIG"/>
+        </monitors>
+        <inputNodes xsi:type="http:HTTPInputNode" nodeName="HTTP Input" urlSpecifier="/stubs/CustomerService"/>
+      </testModules>
+      <testModules xsi:type="model2:TestAppOrLib" name="Stubs" iD="1431938719884-6"/>
+      <settings xsi:type="model2:FlowSettings"/>
+      <settings xsi:type="model2:DeploymentSettings" runtimeEnvType="Integration Bus v9.0" runtimeInstance="localhost^IB9NODE^Deloitte^0" deployOption="DEPLOY_NEVER" barFile="/BARfiles/Stubs.bar"/>
+      <settings xsi:type="mq:MQSettings"/>
+      <settings xsi:type="jms:JMSSettings"/>
+      <settings xsi:type="mq:MQMessageHeaders"/>
+      <settings xsi:type="jms:JMSMessageHeaders"/>
+      <messageHeaders xsi:type="mq:MQHeader" iD="1431938719884-3" replyToQueueName="TEST.OUT " headerName="Default Header">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </messageHeaders>
+      <messageHeaders xsi:type="jms:JMSHeader" headerName="Default Header"/>
+    </scopes>
+  </com.ibm.etools.mft.unittest.core.models.client:EclipseClient>
+  <com.ibm.wbit.comptest.common.models.event:ExecutionEventTrace iD="1431938719884-1" children="/2 /8 /15 /22"/>
+  <model2:InteractiveInputNodeInvocationEvent iD="1431938719884-7" readOnly="true" clientID="1431938719884-0" timestamp="1431938719884" children="/3 /4 /7" msgFlow="/Stubs/uk/co/deloitte/stub/MQIMSStub.msgflow" nodeId="FCMComposite_1_1" testScopeID="default" nodeName="MQ Input" nodeType="ComIbmMQInput.msgnode" targetDeploymentLocationID="1431938872127-12">
+    <request xsi:type="model2:TestMessage" iD="1431938720318-8" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%0D%0A++++%3Csource%3EReadyAPI%3C%2Fsource%3E%0D%0A%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431938719884-3" headerName="Default Header">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <http_1:DeploymentStatus iD="1431938872123-10" parentID="1431938719884-7" timestamp="1431938872123" log="[Info]  Begin deploying message flows&#xD;&#xA;[Info]  Deploying the message flow application&#xD;&#xA;[Info]  Flow is required to be re-deployed because file /Stubs/.project is not in the generated BAR file.&#xD;&#xA;[Info]  Going to rebuild and deploy broker archive&#xD;&#xA;[Info]  Cleaning Broker Archive...&#xD;&#xA;[Info]  Rebuilding broker archive...&#xD;&#xA;[Info]  Initializing test message monitors...&#xD;&#xA;[Info]  Deploying broker archive to execution group...&#xD;&#xA;[Info]  Test client is ready to send and monitor messages.&#xD;&#xA;[Info]  Starting message flows&#xD;&#xA;[Info]  Message flows deployment successfully completed" status="OK" totalWork="10" worked="10" scope="/0/@scopes.0"/>
+  <com.ibm.wbit.comptest.common.models.event:StartEvent name="Starting" iD="1431938889622-28" readOnly="true" clientID="1431938719884-0" parentID="1431938719884-7" timestamp="1431938889622" invokeCommandId="1431938889620-25" children="/5 /6"/>
+  <mq:MQInformationEvent name="Sending Message to MQ Queue &quot;CALL.STUB.IN&quot;" iD="1431938889647-30" host="localhost" port="0" queueManager="IB9QMGR" queue="CALL.STUB.IN" readOnly="true" clientID="1431938719884-0" parentID="1431938889622-28" timestamp="1431938889647" invokeCommandId="1431938889621-26">
+    <message xsi:type="model2:TestMessage" iD="1431938720318-8" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%0D%0A++++%3Csource%3EReadyAPI%3C%2Fsource%3E%0D%0A%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431938889647-32" encoding="273" format="        " putDateTime="Mon May 18 09:48:09 BST 2015" replyToQueueManagerName="                                                " replyToQueueName="                                                " msgId="AMQ+IB9QMGR+++++a%E2%80%98YU+%00%3A%05" correlId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" accountingToken="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" groupId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </message>
+  </mq:MQInformationEvent>
+  <http_1:MonitoringStatus name="Stopped listening for response" iD="1431938889632-29" clientID="1431938719884-0" parentID="1431938889622-28" timestamp="1431938889632">
+    <monitors xsi:type="mq:MQMonitor" name="TEST.OUT" iD="1431938872557-13" host="localhost" port="0" queueManager="IB9QMGR" queue="TEST.OUT" status="OK">
+      <properties name="SERVER_CHANNEL" stringValue="SYSTEM.BKR.CONFIG"/>
+    </monitors>
+  </http_1:MonitoringStatus>
+  <com.ibm.wbit.comptest.common.models.event:EndEvent name="Stopped" iD="1431938942887-36" readOnly="true" clientID="1431938719884-0" parentID="1431938719884-7" timestamp="1431938942887" invokeCommandId="1431938889621-26"/>
+  <model2:InteractiveInputNodeInvocationEvent iD="1431939617865-253" readOnly="true" clientID="1431938719884-0" timestamp="1431939617865" children="/9 /10 /14" msgFlow="/Stubs/uk/co/deloitte/stub/MQIMSStub.msgflow" nodeId="FCMComposite_1_1" testScopeID="default" nodeName="MQ Input" nodeType="ComIbmMQInput.msgnode" targetDeploymentLocationID="1431938872127-12">
+    <request xsi:type="model2:TestMessage" iD="1431938720318-8" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%0D%0A+%3CName%3ESOAP+Richard%3C%2FName%3E%0D%0A+%3CSurname%3ESOAP+Caldeira%3C%2FSurname%3E%0D%0A+%3CAddress1%3ESOAP+Buckley+Building%3C%2FAddress1%3E%0D%0A+%3CAddress2%3ESOAP+49+Clerkenwell+Green%3C%2FAddress2%3E%0D%0A+%3CCity%3ESOAP+London%3C%2FCity%3E%0D%0A+%3CPostCode%3ESOAP+EC1R+0EB%3C%2FPostCode%3E%0D%0A%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431938719884-3" headerName="Default Header">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <http_1:DeploymentStatus iD="1431939618037-256" parentID="1431939617865-253" timestamp="1431939618037" log="[Info]  Begin deploying message flows&#xD;&#xA;[Info]  Deploying the message flow application&#xD;&#xA;[Info]  Initializing test message monitors...&#xD;&#xA;[Info]  Test client is ready to send and monitor messages.&#xD;&#xA;[Info]  Starting message flows&#xD;&#xA;[Info]  Message flows deployment successfully completed" status="OK" totalWork="10" worked="10" scope="/0/@scopes.0"/>
+  <com.ibm.wbit.comptest.common.models.event:StartEvent name="Starting" iD="1431939618185-273" readOnly="true" clientID="1431938719884-0" parentID="1431939617865-253" timestamp="1431939618185" invokeCommandId="1431939618185-269" children="/11 /13 /12"/>
+  <mq:MQInformationEvent name="Sending Message to MQ Queue &quot;CALL.STUB.IN&quot;" iD="1431939618205-276" host="localhost" port="0" queueManager="IB9QMGR" queue="CALL.STUB.IN" readOnly="true" clientID="1431938719884-0" parentID="1431939618185-273" timestamp="1431939618205" invokeCommandId="1431939618185-270">
+    <message xsi:type="model2:TestMessage" iD="1431938720318-8" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%0D%0A++++%3Csource%3EReadyAPI%3C%2Fsource%3E%0D%0A%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431939618205-279" encoding="273" format="        " putDateTime="Mon May 18 10:00:18 BST 2015" replyToQueueManagerName="                                                " replyToQueueName="                                                " msgId="AMQ+IB9QMGR+++++a%E2%80%98YU+%00%C6%92%03" correlId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" accountingToken="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" groupId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </message>
+  </mq:MQInformationEvent>
+  <http_1:MonitoringStatus name="Stopped listening for response" iD="1431939618192-275" clientID="1431938719884-0" parentID="1431939618185-273" timestamp="1431939618192">
+    <monitors xsi:type="mq:MQMonitor" name="TEST.OUT" iD="1431939618055-257" host="localhost" port="0" queueManager="IB9QMGR" queue="TEST.OUT" status="OK">
+      <properties name="SERVER_CHANNEL" stringValue="SYSTEM.BKR.CONFIG"/>
+    </monitors>
+  </http_1:MonitoringStatus>
+  <com.ibm.wbit.comptest.common.models.event:TimeoutEvent name="Timeout" iD="1431939738186-281" readOnly="true" clientID="1431938719884-0" parentID="1431939618185-273" timestamp="1431939738186" invokeCommandId="1431939618185-270"/>
+  <com.ibm.wbit.comptest.common.models.event:EndEvent name="Stopped" iD="1431939738186-282" readOnly="true" clientID="1431938719884-0" parentID="1431939617865-253" timestamp="1431939738186" invokeCommandId="1431939618185-270"/>
+  <model2:InteractiveInputNodeInvocationEvent iD="1431940231906-284" readOnly="true" clientID="1431938719884-0" timestamp="1431940231906" children="/16 /17 /21" msgFlow="/Stubs/uk/co/deloitte/stub/MQIMSStub.msgflow" nodeId="FCMComposite_1_1" testScopeID="default" nodeName="MQ Input" nodeType="ComIbmMQInput.msgnode" targetDeploymentLocationID="1431938872127-12">
+    <request xsi:type="model2:TestMessage" iD="1431938720318-8" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%0D%0A+++%3CName%3ESOAP+Richard%3C%2FName%3E%0D%0A+++%3CSurname%3ESOAP+Caldeira%3C%2FSurname%3E%0D%0A+++%3CAddress1%3ESOAP+Buckley+Building%3C%2FAddress1%3E%0D%0A+++%3CAddress2%3ESOAP+49+Clerkenwell+Green%3C%2FAddress2%3E%0D%0A+++%3CCity%3ESOAP+London%3C%2FCity%3E%0D%0A+++%3CPostCode%3ESOAP+EC1R+0EB%3C%2FPostCode%3E%0D%0A++%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431938719884-3" replyToQueueName="TEST.OUT " headerName="Default Header">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <http_1:DeploymentStatus iD="1431940315695-287" parentID="1431940231906-284" timestamp="1431940315695" log="[Info]  Begin deploying message flows&#xD;&#xA;[Info]  Deploying the message flow application&#xD;&#xA;[Info]  Initializing test message monitors...&#xD;&#xA;[Info]  Test client is ready to send and monitor messages.&#xD;&#xA;[Info]  Starting message flows&#xD;&#xA;[Info]  Message flows deployment successfully completed" status="OK" totalWork="10" worked="10" scope="/0/@scopes.0"/>
+  <com.ibm.wbit.comptest.common.models.event:StartEvent name="Starting" iD="1431940315911-304" readOnly="true" clientID="1431938719884-0" parentID="1431940231906-284" timestamp="1431940315911" invokeCommandId="1431940315911-300" children="/18 /19 /20"/>
+  <mq:MQInformationEvent name="Sending Message to MQ Queue &quot;CALL.STUB.IN&quot;" iD="1431940315932-309" host="localhost" port="0" queueManager="IB9QMGR" queue="CALL.STUB.IN" readOnly="true" clientID="1431938719884-0" parentID="1431940315911-304" timestamp="1431940315932" invokeCommandId="1431940315911-301">
+    <message xsi:type="model2:TestMessage" iD="1431938720318-8" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%0D%0A+++%3CName%3ESOAP+Richard%3C%2FName%3E%0D%0A+++%3CSurname%3ESOAP+Caldeira%3C%2FSurname%3E%0D%0A+++%3CAddress1%3ESOAP+Buckley+Building%3C%2FAddress1%3E%0D%0A+++%3CAddress2%3ESOAP+49+Clerkenwell+Green%3C%2FAddress2%3E%0D%0A+++%3CCity%3ESOAP+London%3C%2FCity%3E%0D%0A+++%3CPostCode%3ESOAP+EC1R+0EB%3C%2FPostCode%3E%0D%0A++%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431940315932-312" encoding="273" format="        " putDateTime="Mon May 18 10:11:55 BST 2015" replyToQueueManagerName="                                                " replyToQueueName="TEST.OUT                                        " msgId="AMQ+IB9QMGR+++++a%E2%80%98YU+%00%C2%B3%04" correlId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" accountingToken="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" groupId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </message>
+  </mq:MQInformationEvent>
+  <mq:MQQueueMonitorEvent name="MQ Queue Monitor &quot;TEST.OUT&quot;" iD="1431940317914-314" host="localhost" port="0" queueManager="IB9QMGR" queue="TEST.OUT" readOnly="true" clientID="1431938719884-0" parentID="1431940315911-304" timestamp="1431940317914" invokeCommandId="1431940315911-301">
+    <message xsi:type="model2:TestMessage" iD="1431940317914-315">
+      <properties name="messageSource" stringValue="structureView"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%3CName%3EIMS+Richard%3C%2FName%3E%3CSurname%3EIMS+Caldeira%3C%2FSurname%3E%3CAddress1%3ESOAP+Buckley+Building%3C%2FAddress1%3E%3CAddress2%3ESOAP+49+Clerkenwell+Green%3C%2FAddress2%3E%3CCity%3EIMS+London%3C%2FCity%3E%3CPostCode%3EIMS+EC1R+0EB%3C%2FPostCode%3E%3CAddressLine1%3EIMS+Buckley+Building%3C%2FAddressLine1%3E%3CAddressLine2%3EIMS+49+Clerkenwell+Green%3C%2FAddressLine2%3E%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <parameters xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="getCustomerDetailsResponse" iD="1431940317919-316">
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="Name" iD="1431940317919-317" value="IMS Richard"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="Surname" iD="1431940317919-318" value="IMS Caldeira"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="Address1" iD="1431940317919-319" value="SOAP Buckley Building"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="Address2" iD="1431940317919-320" value="SOAP 49 Clerkenwell Green"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="City" iD="1431940317919-321" value="IMS London"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="PostCode" iD="1431940317919-322" value="IMS EC1R 0EB"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="AddressLine1" iD="1431940317919-323" value="IMS Buckley Building"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="AddressLine2" iD="1431940317919-324" value="IMS 49 Clerkenwell Green"/>
+      </parameters>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431940317920-325" applicationIdData="                                " applicationOriginData="    " characterSet="850" encoding="273" format="        " persistence="0" priority="0" putApplicationName="IB9QMGR                     " putApplicationType="26" putDateTime="Mon May 18 10:11:55 BST 2015" replyToQueueManagerName="IB9QMGR                                         " replyToQueueName="                                                " userId="            " msgId="AMQ+IB9QMGR+++++a%E2%80%98YU+%00r%05" correlId="AMQ+IB9QMGR+++++a%E2%80%98YU+%00%C2%B3%04" accountingToken="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" groupId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </message>
+  </mq:MQQueueMonitorEvent>
+  <http_1:MonitoringStatus name="Stopped listening for response" iD="1431940315927-308" clientID="1431938719884-0" parentID="1431940315911-304" timestamp="1431940315927">
+    <monitors xsi:type="mq:MQMonitor" name="TEST.OUT" iD="1431940315714-288" host="localhost" port="0" queueManager="IB9QMGR" queue="TEST.OUT" status="OK">
+      <properties name="SERVER_CHANNEL" stringValue="SYSTEM.BKR.CONFIG"/>
+    </monitors>
+    <monitors xsi:type="mq:MQMonitor" name="localhost : 0 : TEST.OUT " iD="1431940315913-305" host="localhost" port="0" queue="TEST.OUT "/>
+  </http_1:MonitoringStatus>
+  <com.ibm.wbit.comptest.common.models.event:EndEvent name="Stopped" iD="1431940317920-326" readOnly="true" clientID="1431938719884-0" parentID="1431940231906-284" timestamp="1431940317920" invokeCommandId="1431940315911-301"/>
+  <model2:InteractiveInputNodeInvocationEvent iD="1431940349198-340" readOnly="true" clientID="1431938719884-0" timestamp="1431940349198" children="/23 /24 /28" msgFlow="/Stubs/uk/co/deloitte/stub/MQIMSStub.msgflow" nodeId="FCMComposite_1_1" testScopeID="default" nodeName="MQ Input" nodeType="ComIbmMQInput.msgnode" targetDeploymentLocationID="1431938872127-12">
+    <request xsi:type="model2:TestMessage" iD="1431938720318-8" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%0D%0A+++%3CName%3ESOAP+Richard%3C%2FName%3E%0D%0A+++%3CSurname%3ESOAP+Caldeira%3C%2FSurname%3E%0D%0A+++%3CAddress1%3ESOAP+Buckley+Building%3C%2FAddress1%3E%0D%0A+++%3CAddress2%3ESOAP+49+Clerkenwell+Green%3C%2FAddress2%3E%0D%0A+++%3CCity%3ESOAP+London%3C%2FCity%3E%0D%0A+++%3CPostCode%3ESOAP+EC1R+0EB%3C%2FPostCode%3E%0D%0A++%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431938719884-3" replyToQueueName="TEST.OUT " headerName="Default Header">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </request>
+  </model2:InteractiveInputNodeInvocationEvent>
+  <http_1:DeploymentStatus iD="1431940350833-343" parentID="1431940349198-340" timestamp="1431940350833" log="[Info]  Begin deploying message flows&#xD;&#xA;[Info]  Deploying the message flow application&#xD;&#xA;[Info]  Initializing test message monitors...&#xD;&#xA;[Info]  Test client is ready to send and monitor messages.&#xD;&#xA;[Info]  Starting message flows&#xD;&#xA;[Info]  Message flows deployment successfully completed" status="OK" totalWork="10" worked="10" scope="/0/@scopes.0"/>
+  <com.ibm.wbit.comptest.common.models.event:StartEvent name="Starting" iD="1431940351028-361" readOnly="true" clientID="1431938719884-0" parentID="1431940349198-340" timestamp="1431940351028" invokeCommandId="1431940351028-357" children="/25 /26 /27"/>
+  <mq:MQInformationEvent name="Sending Message to MQ Queue &quot;CALL.STUB.IN&quot;" iD="1431940351050-365" host="localhost" port="0" queueManager="IB9QMGR" queue="CALL.STUB.IN" readOnly="true" clientID="1431938719884-0" parentID="1431940351028-361" timestamp="1431940351050" invokeCommandId="1431940351028-358">
+    <message xsi:type="model2:TestMessage" iD="1431938720318-8" header="/0/@scopes.0/@messageHeaders.0">
+      <properties name="messageSource" stringValue="sourceView"/>
+      <properties name="WSDL_URI"/>
+      <properties name="WSDL_OPERATION_IN_NAME"/>
+      <properties name="WSDL_OPERATION_NAME"/>
+      <properties name="WSDL_OPERATION_OUT_NAME"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%0D%0A+++%3CName%3ESOAP+Richard%3C%2FName%3E%0D%0A+++%3CSurname%3ESOAP+Caldeira%3C%2FSurname%3E%0D%0A+++%3CAddress1%3ESOAP+Buckley+Building%3C%2FAddress1%3E%0D%0A+++%3CAddress2%3ESOAP+49+Clerkenwell+Green%3C%2FAddress2%3E%0D%0A+++%3CCity%3ESOAP+London%3C%2FCity%3E%0D%0A+++%3CPostCode%3ESOAP+EC1R+0EB%3C%2FPostCode%3E%0D%0A++%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431940351050-368" encoding="273" format="        " putDateTime="Mon May 18 10:12:31 BST 2015" replyToQueueManagerName="                                                " replyToQueueName="TEST.OUT                                        " msgId="AMQ+IB9QMGR+++++a%E2%80%98YU+%00%C2%B9%02" correlId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" accountingToken="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" groupId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </message>
+  </mq:MQInformationEvent>
+  <mq:MQQueueMonitorEvent name="MQ Queue Monitor &quot;TEST.OUT&quot;" iD="1431940353028-370" host="localhost" port="0" queueManager="IB9QMGR" queue="TEST.OUT" readOnly="true" clientID="1431938719884-0" parentID="1431940351028-361" timestamp="1431940353028" invokeCommandId="1431940351028-358">
+    <message xsi:type="model2:TestMessage" iD="1431940353028-371">
+      <properties name="messageSource" stringValue="structureView"/>
+      <properties name="plainText" stringValue="%3CgetCustomerDetailsResponse%3E%3CName%3EIMS+Richard%3C%2FName%3E%3CSurname%3EIMS+Caldeira%3C%2FSurname%3E%3CAddress1%3ESOAP+Buckley+Building%3C%2FAddress1%3E%3CAddress2%3ESOAP+49+Clerkenwell+Green%3C%2FAddress2%3E%3CCity%3EIMS+London%3C%2FCity%3E%3CPostCode%3EIMS+EC1R+0EB%3C%2FPostCode%3E%3CAddressLine1%3EIMS+Buckley+Building%3C%2FAddressLine1%3E%3CAddressLine2%3EIMS+49+Clerkenwell+Green%3C%2FAddressLine2%3E%3C%2FgetCustomerDetailsResponse%3E"/>
+      <properties name="SHOW_HEX_VIEW"/>
+      <properties name="linkedFile"/>
+      <parameters xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="getCustomerDetailsResponse" iD="1431940353029-372">
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="Name" iD="1431940353029-373" value="IMS Richard"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="Surname" iD="1431940353029-374" value="IMS Caldeira"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="Address1" iD="1431940353029-375" value="SOAP Buckley Building"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="Address2" iD="1431940353029-376" value="SOAP 49 Clerkenwell Green"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="City" iD="1431940353029-377" value="IMS London"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="PostCode" iD="1431940353029-378" value="IMS EC1R 0EB"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="AddressLine1" iD="1431940353029-379" value="IMS Buckley Building"/>
+        <elements xsi:type="com.ibm.wbit.comptest.common.models.value:ValueStructure" name="AddressLine2" iD="1431940353029-380" value="IMS 49 Clerkenwell Green"/>
+      </parameters>
+      <headerBeenUsed xsi:type="mq:MQHeader" iD="1431940353029-381" applicationIdData="                                " applicationOriginData="    " characterSet="850" encoding="273" format="        " persistence="0" priority="0" putApplicationName="IB9QMGR                     " putApplicationType="26" putDateTime="Mon May 18 10:12:31 BST 2015" replyToQueueManagerName="IB9QMGR                                         " replyToQueueName="                                                " userId="            " msgId="AMQ+IB9QMGR+++++a%E2%80%98YU+%00r%06" correlId="AMQ+IB9QMGR+++++a%E2%80%98YU+%00%C2%B9%02" accountingToken="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00" groupId="%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00%00">
+        <rfh2>
+          <jms/>
+          <mcd/>
+          <usr/>
+        </rfh2>
+      </headerBeenUsed>
+    </message>
+  </mq:MQQueueMonitorEvent>
+  <http_1:MonitoringStatus name="Stopped listening for response" iD="1431940351042-364" clientID="1431938719884-0" parentID="1431940351028-361" timestamp="1431940351042">
+    <monitors xsi:type="mq:MQMonitor" name="TEST.OUT" iD="1431940350847-344" host="localhost" port="0" queueManager="IB9QMGR" queue="TEST.OUT" status="OK">
+      <properties name="SERVER_CHANNEL" stringValue="SYSTEM.BKR.CONFIG"/>
+    </monitors>
+    <monitors xsi:type="mq:MQMonitor" name="localhost : 0 : TEST.OUT " iD="1431940351031-362" host="localhost" port="0" queue="TEST.OUT "/>
+  </http_1:MonitoringStatus>
+  <com.ibm.wbit.comptest.common.models.event:EndEvent name="Stopped" iD="1431940353029-382" readOnly="true" clientID="1431938719884-0" parentID="1431940349198-340" timestamp="1431940353029" invokeCommandId="1431940351028-358"/>
+</xmi:XMI>
